@@ -21,7 +21,47 @@ public class RationalTest {
 	r_20_25 = new Rational(20,25);
 	r_0_1 = new Rational(0,1);
     }
+	
+	@Test
+	public void test_lcm(){
+		
+	}
+	
+        @Test
+	public void test_plus(){
 
+	}
+	
+        @Test
+	public void test_sum(){
+		assertEquals();
+	}
+	
+        @Test
+	public void test_minus(){
+
+	}
+	
+        @Test	
+	public void test_difference(){
+
+	}
+	
+        @Test
+	public void test_reciprocalOf(){
+
+	}
+
+        @Test	
+	public void test_dividedBy(){
+
+        }
+
+        @Test
+	public void test_Quotient(){
+
+        }
+	
     @Test(expected = IllegalArgumentException.class)
     public void test_denom_zero() {
 	Rational r = new Rational(1,0);

@@ -24,7 +24,39 @@ public class Rational {
 	else
 	    return gcd(b%a, a);
     }
-    
+   
+	public static int lcm(int a, int b) {
+	
+	}
+	
+	public Rational plus(Rational r){
+
+	}
+ 
+	public static Rational sum(Rational a, Rational b){
+
+	}
+
+	public Rational minus(Rational r){
+
+	}
+
+	public static Rational difference(Rational a, Rational b){
+	
+	}
+
+	public Rational reciprocalOf(){
+	
+	}
+
+	public Rational dividedBy(Rational r){
+
+	}
+
+	public static Rational quotient(Rational a, Rational b){
+
+	}
+
     public Rational() {
 	this.num = 1;
 	this.denom = 1;
