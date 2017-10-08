@@ -31,7 +31,7 @@ public class RationalTest {
 	
 	@Test
 	public void test_lcm_5_15(){
-		assertEquals(15, r_5_15.lcm(r_5_15.num, r_5_15.denom));
+		assertEquals(15, r_5_15.lcm(r_5_15.getNumerator(), r_5_15.getDenominator()));
 	}
 	
         @Test
