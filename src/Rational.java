@@ -46,7 +46,7 @@ public class Rational {
 	}
 
 	public static Rational difference(Rational a, Rational b){
-		return sum(a, new Rational(-1 * r.num, r.denom));
+		return sum(a, new Rational(-1 * b.num, b.denom));
 	}
 
 	public Rational reciprocalOf(){
