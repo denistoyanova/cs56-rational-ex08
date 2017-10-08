@@ -31,7 +31,7 @@ public class RationalTest {
 	
 	@Test
 	public void test_lcm_5_15(){
-		assertEquals(15, r_5_15.lcm(r_5_15.a, r_5_15.b));
+		assertEquals(15, r_5_15.lcm(r_5_15.num, r_5_15.denom));
 	}
 	
         @Test
@@ -43,7 +43,7 @@ public class RationalTest {
         @Test
 	public void test_sum_1_2_plus_1_2(){
 		Rational r = new Rational(1,1);
-		assertEquals(r, r_1_2.plus(r_1_2, r_1_2));
+		assertEquals(r, r_1_2.sum(r_1_2, r_1_2));
 	}
 	
         @Test
@@ -53,7 +53,7 @@ public class RationalTest {
 	
         @Test	
 	public void test_difference(){
-		assertEquals(r_1_2, r_1_1.minus(r_1_1, r_1_2));
+		assertEquals(r_1_2, r_1_1.difference(r_1_1, r_1_2));
 	}
 	
         @Test
