@@ -30,23 +30,23 @@ public class Rational {
 	}
 	
 	public Rational plus(Rational r){
-		int lcm = lcm(this.denom, r.denom);
-		int numTot = lcm/this.denom * this.num + lcm/r.denom * r.num;
+		int lcm = lcm(this.getDenominator(), r.getDenominator());
+		int numTot = lcm/this.getDenominator() * this.getNumerator() + lcm/r.getDenominator() * r.getNumerator();
 		return new Rational(numTot, lcm);
 	}
  
 	public static Rational sum(Rational a, Rational b){
-		int lcm = lcm(a.denom, b.denom);
-		int numTot = lcm/a.denom * a.num + lcm/b.denom * b.num;
+		int lcm = lcm(a.getDenominator(), b.getDenominator());
+		int numTot = lcm/a.getDenominator() * a.getNumerator() + lcm/b.getDenominator() * b.getNumerator();
 		return new Rational(numTot, lcm);
 	}
 
 	public Rational minus(Rational r){
-		return sum(this, new Rational(-1 * r.num, r.denom));
+		return plus(new Rational(-1 * r.getNumerator(), r.getDenominator()));
 	}
 
 	public static Rational difference(Rational a, Rational b){
-		return sum(a, new Rational(-1 * b.num, b.denom));
+		return sum(a, new Rational(-1 * b.getNumerator(), b.getDenominator()));
 	}
 
 	public Rational reciprocalOf(){
