@@ -26,7 +26,7 @@ public class Rational {
     }
    
 	public static int lcm(int a, int b) {
-		return (Math.abs(a * b) / gcd(a, b));
+		return Math.abs((a * b) / gcd(a, b));
 	}
 	
 	public Rational plus(Rational r){

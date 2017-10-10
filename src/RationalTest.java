@@ -41,7 +41,15 @@ public class RationalTest {
     }
     @Test
     public void test_lcm_15(){
-        assertEquals(15, 15, 15);
+        assertEquals(15, r_5_15.lcm(15, 15));
+    }
+    @Test
+    public void test_lcm_neg(){
+        assertEquals(15, r_5_15.lcm(-15, 15));
+    }
+    @Test
+    public void test_lcm_ne2(){
+        assertEquals(15, r_5_15.lcm(-15, -15));
     }
     
 	
@@ -63,16 +71,36 @@ public class RationalTest {
         Rational r = new Rational(5,-7);
         assertEquals("-2/7", r_3_7.plus(r).toString());
     }
+    @Test
+    public void test_plus_2_7_2(){
+        Rational r = new Rational(-1,-2);
+        assertEquals("13/14", r_3_7.plus(r).toString());
+    }
     
     
     
     @Test
     public void test_sum_1_2_plus_1_2(){
-        assertEquals("1", r_1_2.sum(r_1_2, r_1_2).toString());
+        assertEquals("3", r_2_1.sum(r_2_1, r_1_1).toString());
     }
     @Test
-    public void test_sum_0_1(){
-        assertEquals("1/2", r_0_1.sum(r_0_1, r_1_2).toString());
+    public void test_sum_0_1_plus_1_2(){
+        assertEquals("1", r_0_1.sum(r_0_1, r_1_1).toString());
+    }
+    @Test
+    public void test_sum_0_1_plus_1_2_neg(){
+        Rational r = new Rational(1,-1);
+        assertEquals("-1", r_0_1.sum(r_0_1, r).toString());
+    }
+    @Test
+    public void test_sum_2_7(){
+        Rational r = new Rational(5,-7);
+        assertEquals("-2/7", r_3_7.sum(r_3_7, r).toString());
+    }
+    @Test
+    public void test_sum_2_7_2(){
+        Rational r = new Rational(-1,-2);
+        assertEquals("13/14", r_3_7.sum(r_3_7, r).toString());
     }
 
     
@@ -89,6 +117,11 @@ public class RationalTest {
     public void test_minus_0_1_minus_1_2(){
         assertEquals("-1/2", r_0_1.minus(r_1_2).toString());
     }
+    @Test
+    public void test_minus_0_1_minus_1_2_2(){
+        Rational r = new Rational(-1,-2);
+        assertEquals("-1/2", r_0_1.minus(r).toString());
+    }
     
     
 	
@@ -96,6 +129,19 @@ public class RationalTest {
 	public void test_difference(){
 		assertEquals("1/2", r_1_1.difference(r_1_1, r_1_2).toString());
 	}
+    @Test
+    public void test_minus_1_1_difference_2_1(){
+        assertEquals("-1", r_1_1.difference(r_1_1, r_1_2.reciprocalOf()).toString());
+    }
+    @Test
+    public void test_minus_0_1_difference_1_2(){
+        assertEquals("-1/2", r_0_1.difference(r_0_1, r_1_2).toString());
+    }
+    @Test
+    public void test_minus_0_1_difference_1_2_2(){
+        Rational r = new Rational(-1,-2);
+        assertEquals("-1/2", r_0_1.difference(r_0_1,r).toString());
+    }
     
     
     
@@ -113,6 +159,11 @@ public class RationalTest {
         Rational r = new Rational(-1,2);
         assertEquals("-2", r.reciprocalOf().toString());
     }
+    @Test
+    public void test_reciprocalOf_pos(){
+        Rational r = new Rational(-1,-2);
+        assertEquals("2", r.reciprocalOf().toString());
+    }
 
     
     @Test
@@ -124,11 +175,14 @@ public class RationalTest {
         Rational r = new Rational (-2, 1);
         assertEquals("-1/4", r_1_2.dividedBy(r).toString());
     }
-    
     @Test(expected = ArithmeticException.class)
     public void test_dividedBy3(){
         Rational r = new Rational (0, 1);
         assertEquals("?", r_1_2.dividedBy(r).toString());
+    }
+    public void test_dividedBy4(){
+        Rational r = new Rational (-2, -1);
+        assertEquals("1/4", r_1_2.dividedBy(r).toString());
     }
 
     
@@ -136,6 +190,20 @@ public class RationalTest {
     @Test
     public void test_quotient(){
         assertEquals("1/4", r_1_2.quotient(r_1_2,r_2_1).toString());
+    }
+    @Test
+    public void test_quotient2(){
+        Rational r = new Rational (-2, 1);
+        assertEquals("-1/4", r_1_2.quotient(r_1_2, r).toString());
+    }
+    @Test(expected = ArithmeticException.class)
+    public void test_quotient3(){
+        Rational r = new Rational (0, 1);
+        assertEquals("?", r_1_2.quotient(r_1_2, r).toString());
+    }
+    public void test_quotient4(){
+        Rational r = new Rational (-2, -1);
+        assertEquals("1/4", r_1_2.quotient(r_1_2,r).toString());
     }
     
     
