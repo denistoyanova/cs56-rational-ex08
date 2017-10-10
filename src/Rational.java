@@ -26,19 +26,17 @@ public class Rational {
     }
    
 	public static int lcm(int a, int b) {
-		return a * (b / gcd(a, b));
+		return (Math.abs(a * b) / gcd(a, b));
 	}
 	
 	public Rational plus(Rational r){
 		int lcm = lcm(this.getDenominator(), r.getDenominator());
-		int numTot = lcm/this.getDenominator() * this.getNumerator() + lcm/r.getDenominator() * r.getNumerator();
+		int numTot = (this.num * lcm/this.denom) + (r.getNumerator() *lcm/r.getDenominator());
 		return new Rational(numTot, lcm);
 	}
  
 	public static Rational sum(Rational a, Rational b){
-		int lcm = lcm(a.getDenominator(), b.getDenominator());
-		int numTot = lcm/a.getDenominator() * a.getNumerator() + lcm/b.getDenominator() * b.getNumerator();
-		return new Rational(numTot, lcm);
+		return a.plus(b);
 	}
 
 	public Rational minus(Rational r){
@@ -46,7 +44,7 @@ public class Rational {
 	}
 
 	public static Rational difference(Rational a, Rational b){
-		return sum(a, new Rational(-1 * b.getNumerator(), b.getDenominator()));
+		return a.minus(b);
 	}
 
 	public Rational reciprocalOf(){
@@ -72,6 +70,10 @@ public class Rational {
 	    this.num /= gcd;
 	    this.denom /= gcd;
 	}
+        if(this.denom < 0){
+            this.denom *= -1;
+            this.num *= -1;
+        }
     }
 
     public String toString() {

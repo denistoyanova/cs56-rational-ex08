@@ -29,48 +29,82 @@ public class RationalTest {
 	    r_2_1 = new Rational(2,1);
     }
 	
-	@Test
-	public void test_lcm_5_15(){
-		assertEquals(15, r_5_15.lcm(r_5_15.getNumerator(), r_5_15.getDenominator()));
-	}
+    @Test
+    public void test_lcm_5_15(){
+        assertEquals(3, r_5_15.lcm(r_5_15.getNumerator(), r_5_15.getDenominator()));
+    }
+    
+    @Test
+    public void test_lcm_0_1(){
+        Rational r = new Rational(0,1);
+        assertEquals(0, r.lcm(r.getNumerator(), r.getDenominator()));
+    }
 	
-        @Test
-	public void test_plus_1_2_plus_1_2(){
-		Rational r = new Rational(1,1);
-		assertEquals(r, r_1_2.plus(r_1_2));
-	}
-	
+    @Test
+    public void test_plus_1_2_plus_1_2(){
+        assertEquals("3", r_2_1.plus(r_1_1).toString());
+    }
+    
+    @Test
+    public void test_plus_0_1_plus_1_2(){
+        assertEquals("1", r_0_1.plus(r_1_1).toString());
+    }
+    @Test
+    public void test_plus_0_1_plus_1_2_neg(){
+        Rational r = new Rational(1,-1);
+        assertEquals("-1", r_0_1.plus(r).toString());
+    }
+
+    @Test
+    public void test_plus_2_7(){
+        Rational r = new Rational(5,-7);
+        assertEquals("-2/7", r_3_7.plus(r).toString());
+    }
         @Test
 	public void test_sum_1_2_plus_1_2(){
-		Rational r = new Rational(1,1);
-		assertEquals(r, r_1_2.sum(r_1_2, r_1_2));
+		assertEquals("1", r_1_2.sum(r_1_2, r_1_2).toString());
 	}
-	
+
         @Test
 	public void test_minus_1_1_minus_1_2(){
-		assertEquals(r_1_2, r_1_1.minus(r_1_2));
+		assertEquals("1/2", r_1_1.minus(r_1_2).toString());
 	}
 	
-        @Test	
+        @Test
 	public void test_difference(){
-		assertEquals(r_1_2, r_1_1.difference(r_1_1, r_1_2));
-	}
-	
-        @Test
-	public void test_reciprocalOf_1_2(){
-		assertEquals(r_2_1, r_1_2.reciprocalOf());
+		assertEquals("1/2", r_1_1.difference(r_1_1, r_1_2).toString());
 	}
 
-        @Test	
-	public void test_dividedBy(){
-		Rational r = new Rational(1,4);
-		assertEquals(r, r_1_2.dividedBy(r_2_1));
+    @Test(expected = ArithmeticException.class)
+	public void test_reciprocalOf_0(){
+		assertEquals("?", r_0_1.reciprocalOf().toString());
+	}
+    
+    @Test
+    public void test_reciprocalOf_1_2(){
+        assertEquals(r_2_1.toString(), r_1_2.reciprocalOf().toString());
+    }
+
+        @Test
+        public void test_dividedBy1(){
+            assertEquals("1/4", r_1_2.dividedBy(r_2_1).toString());
         }
+    
+    @Test
+    public void test_dividedBy2(){
+        Rational r = new Rational (-2, 1);
+        assertEquals("-1/4", r_1_2.dividedBy(r).toString());
+    }
+    
+    @Test(expected = ArithmeticException.class)
+    public void test_dividedBy3(){
+        Rational r = new Rational (0, 1);
+        assertEquals("?", r_1_2.dividedBy(r).toString());
+    }
 
         @Test
-	public void test_quotient(){
-		Rational r = new Rational(1,4);
-		assertEquals(r, r_1_2.quotient(r_1_2,r_2_1));
+        public void test_quotient(){
+            assertEquals("1/4", r_1_2.quotient(r_1_2,r_2_1).toString());
         }
 	
     @Test(expected = IllegalArgumentException.class)
