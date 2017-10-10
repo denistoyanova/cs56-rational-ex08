@@ -50,7 +50,9 @@
   </target>
 
   <property name="javadoc_absolute_path" location="javadoc"/>
-
+  <property name="javadoc_path" location="javadoc"/>
+  <property name="public_javadoc_path" location="../lab01-javadoc-denistoyanova/javadoc"/>
+  
 <target name="javadoc" depends="compile" description="generate javadoc">
     <delete quiet="true">
         <fileset dir="javadoc" />
